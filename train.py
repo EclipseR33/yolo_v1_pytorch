@@ -21,10 +21,8 @@ class CFG:
     root0712 = [r'F:\AI\Dataset\VOC2007\VOCdevkit\VOC2007', r'F:\AI\Dataset\VOC2012\VOCdevkit\VOC2012']
     class_path = r'./dataset/classes.json'
     model_root = r'./log/ex7'
-    model_path = r'./log/ex7/yolo.pth'
-    # 实验前注意更改 ex文件夹
-    ######################################################
-
+    model_path = None
+    
     backbone = 'resnet'
     pretrain = 'model/resnet50-19c8e357.pth'
     with_amp = True
@@ -38,21 +36,21 @@ class CFG:
         Resize(448, keep_ratio=False)
     ])
 
-    start_epoch = 122
+    start_epoch = 0
     epoch = 135
     batch_size = 16
     num_workers = 2
-
+	
     freeze_backbone_till = 30
 
     scheduler_params = {
-        'lr_start': 1e-3 / 6,
+        'lr_start': 1e-3 / 4,
         'step_warm_ep': 10,
-        'step_1_lr': 1e-2 / 6,
+        'step_1_lr': 1e-2 / 4,
         'step_1_ep': 75,
-        'step_2_lr': 1e-3 / 6,
+        'step_2_lr': 1e-3 / 4,
         'step_2_ep': 40,
-        'step_3_lr': 1e-4 / 6,
+        'step_3_lr': 1e-4 / 4,
         'step_3_ep': 10
     }
 
